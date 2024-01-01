@@ -1,15 +1,15 @@
 // to get all contacts
-const getAllContact = (req, res)=>{
+const getAllContact = async (req, res)=>{
     return res.status(200).json({message: "contact api"})
 }
 
 // to get a specific contact
-const specificContact = (req,res)=>{
+const specificContact = async (req,res)=>{
     return res.status(200).json({message: `contact of id ${req.params.id}`})
 }
 
 // to create a new contact
-const newContact = (req,res)=>{
+const newContact = async (req,res)=>{
     const {name, email, phoneno} = req.body
     if (!(name || email || phoneno)){
         res.status(400)
@@ -19,12 +19,12 @@ const newContact = (req,res)=>{
 }
 
 // to update a contact
-const updateContact = (req,res)=>{
+const updateContact = async (req,res)=>{
     return res.status(200).json({message: `updated contact of id ${req.params.id}`})
 }
 
 // to delete a contact
-const deleteContact = (req,res)=>{
+const deleteContact = async (req,res)=>{
     return res.status(200).json({message: `deleted contact of id ${req.params.id}`})
 }
 
