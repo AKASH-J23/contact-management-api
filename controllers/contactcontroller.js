@@ -10,7 +10,12 @@ const specificContact = (req,res)=>{
 
 // to create a new contact
 const newContact = (req,res)=>{
-    return res.status(200).json({message: `Added contact of id ${req.params.id}`})
+    const {name, email, phoneno} = req.body
+    if (!(name || email || phoneno)){
+        res.status(400)
+        throw new Error("All fields are mandatory !")
+    }
+    return res.status(201).json({message: `Added contact of id ${req.params.id}`})
 }
 
 // to update a contact
