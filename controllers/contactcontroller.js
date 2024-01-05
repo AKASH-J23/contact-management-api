@@ -9,7 +9,8 @@ const getAllContact = asyncHandler( async (req, res)=>{
 
 // to get a specific contact
 const specificContact = asyncHandler( async (req,res)=>{
-    return res.status(200).json({message: `contact of id ${req.params.id}`})
+    const singleContact = await contact.findOne({"name" : req.params.name})
+    res.status(200).json({message: `contact details: ${singleContact}`})
 })
 
 // to create a new contact
@@ -19,7 +20,8 @@ const newContact = asyncHandler( async (req,res)=>{
         res.status(400)
         throw new Error("All fields are mandatory !")
     }
-    return res.status(201).json({message: `Added contact of id ${req.params.id}`})
+    const newerContact = contact.create({name, email, phoneno})
+    return res.status(201).json({message: `Created contact ${req.body.name}`})
 })
 
 // to update a contact

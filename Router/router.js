@@ -13,6 +13,6 @@ const {getAllContact,
 router.route("/").get(getAllContact)
 
 // id route
-router.route("/:id").get(specificContact).post(newContact).put(updateContact).delete(deleteContact)
+router.route("/:name").get(specificContact).post(newContact).put(updateContact).delete(deleteContact)
 
 module.exports = router;
